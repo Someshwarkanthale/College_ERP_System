@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2024 at 01:22 PM
+-- Generation Time: Feb 17, 2025 at 06:51 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,7 +41,27 @@ CREATE TABLE `additional_fees` (
 
 INSERT INTO `additional_fees` (`id`, `department`, `fee`, `created_at`, `updated_at`) VALUES
 (3, 'Library', 3000.00, '2024-12-24 10:24:05', '2024-12-24 10:24:05'),
-(4, 'hostel', 35000.00, '2024-12-24 10:24:29', '2024-12-24 10:24:29');
+(4, 'hostel', 35000.00, '2024-12-24 10:24:29', '2024-12-24 10:24:29'),
+(9, 'lab', 13000.00, '2025-02-13 19:20:10', '2025-02-13 19:20:10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bb-bcs`
+--
+
+CREATE TABLE `bb-bcs` (
+  `id` int(11) NOT NULL,
+  `category` varchar(255) NOT NULL,
+  `fee` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bb-bcs`
+--
+
+INSERT INTO `bb-bcs` (`id`, `category`, `fee`) VALUES
+(1, 'ebc', 25000.00);
 
 -- --------------------------------------------------------
 
@@ -60,7 +80,27 @@ CREATE TABLE `bba` (
 --
 
 INSERT INTO `bba` (`id`, `category`, `fee`) VALUES
-(3, 'NT', 14000.00);
+(3, 'NT', 14000.00),
+(6, 'obc', 140000.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bba-i`
+--
+
+CREATE TABLE `bba-i` (
+  `id` int(11) NOT NULL,
+  `category` varchar(255) NOT NULL,
+  `fee` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bba-i`
+--
+
+INSERT INTO `bba-i` (`id`, `category`, `fee`) VALUES
+(1, 'obc', 25000.00);
 
 -- --------------------------------------------------------
 
@@ -81,7 +121,9 @@ CREATE TABLE `courses` (
 INSERT INTO `courses` (`id`, `course_name`, `fee`) VALUES
 (7, 'BBA', 25000.00),
 (27, 'MBA', 25000.00),
-(29, 'MCA', 120000.00);
+(29, 'MCA', 120000.00),
+(32, 'BBA-I', 25000.00),
+(33, 'BB-BCS', 510000.00);
 
 -- --------------------------------------------------------
 
@@ -143,14 +185,17 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `student_name`, `course_name`, `category`, `total_fee`, `paid_fee`, `remaining_fee`) VALUES
-(4, 'somesh', 'MCA', 'obc', 250000.00, 14568.00, 235432.00),
+(4, 'somesh', 'MCA', 'obc', 250000.00, 15159.00, 234841.00),
 (6, 'ramesh', 'MBA', 'obc', 82000.00, 20000.00, 62000.00),
 (7, 'raju', 'MCA', 'SC', 28000.00, 20000.00, 8000.00),
 (8, 'rahula', 'MBA', 'obc', 85000.00, 21000.00, 64000.00),
 (13, 'sam', 'MCA', 'obc', 65000.00, 0.00, 65000.00),
 (14, 'dipak yadav', 'MCA', 'open', 48222.00, 12000.00, 36222.00),
 (15, 'ritesh', 'MCA', 'open', 120000.00, 0.00, 120000.00),
-(22, 'omkar', 'BBA', 'NT', 14000.00, 0.00, 14000.00);
+(22, 'omkar', 'BBA', 'NT', 14000.00, 13000.00, 1000.00),
+(24, 'AK', 'MCA', 'open', 63000.00, 50000.00, 13000.00),
+(25, 'sidhu', 'BBA', 'obc', 191000.00, 50000.00, 141000.00),
+(26, 'vZ', 'BB-BCS', 'ebc', 28000.00, 0.00, 28000.00);
 
 -- --------------------------------------------------------
 
@@ -178,7 +223,13 @@ INSERT INTO `transactions` (`id`, `student_id`, `paid_fee`, `transaction_date`) 
 (29, 14, 12000.00, '2024-12-25 10:59:33'),
 (31, 4, 12.00, '2024-12-28 12:32:46'),
 (32, 4, 12000.00, '2024-12-28 12:57:39'),
-(33, 4, 556.00, '2024-12-28 13:01:32');
+(33, 4, 556.00, '2024-12-28 13:01:32'),
+(34, 24, 50000.00, '2024-12-30 14:47:15'),
+(35, 4, 14.00, '2024-12-30 16:13:50'),
+(36, 4, 555.00, '2025-01-21 10:11:41'),
+(37, 4, 22.00, '2025-01-21 10:12:45'),
+(38, 25, 50000.00, '2025-02-13 20:21:31'),
+(39, 22, 13000.00, '2025-02-17 06:06:57');
 
 --
 -- Indexes for dumped tables
@@ -191,9 +242,21 @@ ALTER TABLE `additional_fees`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `bb-bcs`
+--
+ALTER TABLE `bb-bcs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `bba`
 --
 ALTER TABLE `bba`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bba-i`
+--
+ALTER TABLE `bba-i`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -236,19 +299,31 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `additional_fees`
 --
 ALTER TABLE `additional_fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `bb-bcs`
+--
+ALTER TABLE `bb-bcs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `bba`
 --
 ALTER TABLE `bba`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `bba-i`
+--
+ALTER TABLE `bba-i`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `mba`
@@ -266,13 +341,13 @@ ALTER TABLE `mca`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- Constraints for dumped tables

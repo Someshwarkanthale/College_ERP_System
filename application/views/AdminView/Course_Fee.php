@@ -165,10 +165,10 @@
                                 <td><?php echo $course->course_name; ?></td>
                                 <td><?php echo number_format($course->fee, 2); ?></td>
                                 <td>
-                                    <a href="<?php echo site_url('index.php/AdminPanel/update_course/' . $course->id); ?>" class="btn btn-warning btn-sm">
+                                    <a href="<?php echo site_url('AdminPanel/update_course/' . $course->id); ?>" class="btn btn-warning btn-sm">
                                         Edit
                                     </a>
-                                    <a href="<?php echo site_url('index.php/AdminPanel/delete_course/' . $course->id); ?>"
+                                    <a href="<?php echo site_url('AdminPanel/delete_course/' . $course->id); ?>"
                                         class="btn btn-danger btn-sm"
                                         onclick="return confirm('Are you sure you want to delete this course?');">Delete</a>
                                 </td>
@@ -178,7 +178,7 @@
                 </table>
                 <div class="d-flex justify-content-between mb-3">
                     <div>
-                        <a href="<?php echo site_url('index.php/AdminPanel/add_course_form'); ?>" class="btn btn-primary btn-custom">Add New Course</a>
+                        <a href="<?php echo site_url('AdminPanel/add_course_form'); ?>" class="btn btn-primary btn-custom">Add New Course</a>
                     </div>
                 </div>
                 </div>
@@ -208,8 +208,8 @@
                                 <td><?php echo $fee->department; ?></td>
                                 <td><?php echo number_format($fee->fee, 2); ?></td>
                                 <td>
-                                    <a href="<?php echo site_url('index.php/AdminPanel/Upadate_additional_fee_form/' . $fee->id); ?>" class="btn btn-warning btn-sm">Edit</a>
-                                    <a href="<?php echo site_url('index.php/AdminPanel/delete_additional_fee/' . $fee->id); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this additional fee?');">
+                                    <a href="<?php echo site_url('AdminPanel/Upadate_additional_fee_form/' . $fee->id); ?>" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="<?php echo site_url('AdminPanel/delete_additional_fee/' . $fee->id); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this additional fee?');">
                                         Delete
                                     </a>
                                 </td>
@@ -219,7 +219,7 @@
                 </table>
                 <div class="d-flex justify-content-between mb-3">
                     <div>
-                        <a href="<?php echo site_url('index.php/AdminPanel/add_additional_fee_form'); ?>" class="btn btn-primary">Add Additional Fee</a>
+                        <a href="<?php echo site_url('AdminPanel/add_additional_fee_form'); ?>" class="btn btn-primary">Add Additional Fee</a>
                     </div>
                 </div>
                 </div>
@@ -251,8 +251,8 @@
                                             <td><?php echo $data->category; ?></td>
                                             <td><?php echo number_format($data->fee, 2); ?></td>
                                             <td>
-                                                <a href="<?php echo site_url('index.php/AdminPanel/update_Category_form/' . $course->course_name . '/' . $data->id); ?>" class="btn btn-warning btn-sm">Edit</a>
-                                                <a href="<?php echo site_url('index.php/AdminPanel/delete_Category/' . $course->course_name . '/' . $data->id); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">
+                                                <a href="<?php echo site_url('AdminPanel/update_Category_form/' . $course->course_name . '/' . $data->id); ?>" class="btn btn-warning btn-sm">Edit</a>
+                                                <a href="<?php echo site_url('AdminPanel/delete_Category/' . $course->course_name . '/' . $data->id); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">
                                                     Delete
                                                 </a>
                                             </td>
@@ -267,7 +267,7 @@
                         </table>
                         <div class="d-flex justify-content-between mb-3">
                             <div>
-                                <a href="<?php echo site_url('index.php/AdminPanel/add_Category_form/' . $course->course_name); ?>" class="btn btn-primary">Add Category</a>
+                                <a href="<?php echo site_url('AdminPanel/add_Category_form/' . $course->course_name); ?>" class="btn btn-primary">Add Category</a>
                             </div>
                         </div>
                     </div>

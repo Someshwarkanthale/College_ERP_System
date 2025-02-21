@@ -35,6 +35,7 @@ $config['base_url'] = ' http://localhost/College_ERP_System/';
 | variable so that it is blank.
 |
 */
+
 $config['index_page'] = '';
 
 /*
@@ -66,6 +67,7 @@ $config['uri_protocol']	= 'REQUEST_URI';
 |
 | Note: This option is ignored for CLI requests.
 */
+
 $config['url_suffix'] = '';
 
 /*
@@ -78,6 +80,7 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
+
 $config['language']	= 'english';
 
 /*
@@ -91,6 +94,7 @@ $config['language']	= 'english';
 | See http://php.net/htmlspecialchars for a list of supported charsets.
 |
 */
+
 $config['charset'] = 'UTF-8';
 
 /*
@@ -102,6 +106,7 @@ $config['charset'] = 'UTF-8';
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
+
 $config['enable_hooks'] = FALSE;
 
 /*

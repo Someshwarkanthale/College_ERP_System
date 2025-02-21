@@ -146,7 +146,7 @@
             <!--Page area start-->
             <div class="container mt-5">
                 <h2>Add Data to <?php echo htmlspecialchars($course_name, ENT_QUOTES, 'UTF-8'); ?></h2>
-                <form action="<?php echo site_url('index.php/AdminPanel/add_Category'); ?>" method="post" onsubmit="return validateForm();">
+                <form action="<?php echo site_url('AdminPanel/add_Category'); ?>" method="post" onsubmit="return validateForm();">
                     <input type="hidden" name="course_name" value="<?php echo htmlspecialchars($course_name, ENT_QUOTES, 'UTF-8'); ?>">
 
                     <!-- Category field with real-time validation -->

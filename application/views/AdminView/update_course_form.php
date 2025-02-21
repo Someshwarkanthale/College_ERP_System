@@ -155,7 +155,7 @@
 
                 <?php echo validation_errors(); ?>
 
-                <form action="<?php echo site_url('index.php/AdminPanel/update_course/' . $course->id); ?>" method="post">
+                <form action="<?php echo site_url('AdminPanel/update_course/' . $course->id); ?>" method="post">
                     <div class="form-group">
                         <label for="course_name">Course Name</label>
                         <input type="text" class="form-control" id="course_name" name="course_name" value="<?php echo htmlspecialchars($course->course_name); ?>" required>

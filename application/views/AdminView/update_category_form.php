@@ -147,7 +147,7 @@
             <!--Page area start-->
             <div class="container mt-5">
                 <h2>Edit Data for <?php echo $course_name; ?></h2>
-                <form action="<?php echo site_url('index.php/AdminPanel/update_Category'); ?>" method="post" onsubmit="return validateForm();">
+                <form action="<?php echo site_url('AdminPanel/update_Category'); ?>" method="post" onsubmit="return validateForm();">
                     <input type="hidden" name="course_name" value="<?php echo $course_name; ?>">
                     <input type="hidden" name="id" value="<?php echo $record->id; ?>">
                     <div class="form-group">

@@ -92,7 +92,7 @@
             <div class="container mt-2 p-5">
         <h2 class="text-center">Update Student</h2>
 
-        <form action="<?php echo site_url('index.php/AdminPanel/update_student'); ?>" method="post" onsubmit="return validateForm();">
+        <form action="<?php echo site_url('AdminPanel/update_student'); ?>" method="post" onsubmit="return validateForm();">
             <input type="hidden" name="id" value="<?php echo $student->id; ?>">
 
             <div class="form-group">
@@ -164,7 +164,7 @@
             $('#loading_indicator').show(); // Show the loading indicator
 
             $.ajax({
-                url: "<?php echo site_url('courses/fetch_categories'); ?>",
+                url: "<?php echo site_url('AdminPanel/fetch_categories'); ?>",
                 method: "POST",
                 data: {
                     course_name: course_name
@@ -196,35 +196,7 @@
             });
         }
 
-        // Fetch fee based on selected course and category
-        function fetchFee(course_name, category) {
-            $('#loading_indicator').show(); // Show the loading indicator
-
-            $.ajax({
-                url: "<?php echo site_url('courses/fetch_fee'); ?>",
-                method: "POST",
-                data: {
-                    course_name: course_name,
-                    category: category
-                },
-                success: function(response) {
-                    var fee = JSON.parse(response);
-                    if (fee && fee.length > 0) {
-                        $('#fee').val(fee[0].fee); // Set the base fee
-                        calculateTotalFee(); // Recalculate total fee
-                    } else {
-                        $('#fee').val(''); // Clear fee if not found
-                        alert("Fee details not found.");
-                    }
-                    $('#loading_indicator').hide(); // Hide the loading indicator
-                },
-                error: function() {
-                    $('#loading_indicator').hide(); // Hide loading if AJAX fails
-                    alert("Error fetching fee.");
-                }
-            });
-        }
-
+       
         // Validate the form
         function validateForm() {
             var studentName = $('#student_name').val().trim();

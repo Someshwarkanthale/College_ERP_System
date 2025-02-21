@@ -163,7 +163,7 @@
 
 
                 <!-- Registration Form -->
-                <form class="form-S" action="<?php echo site_url('index.php/AdminPanel/add_student'); ?>" method="POST" onsubmit="return validateForm();">
+                <form class="form-S" action="<?php echo site_url('AdminPanel/add_student'); ?>" method="POST" onsubmit="return validateForm();">
                     <div class="form-group">
                         <label for="name">Student Name:</label>
                         <input type="text" name="name" id="name" class="form-control" placeholder="Enter student name" required>
@@ -228,7 +228,7 @@
             $('#loading_indicator').show(); // Show the loading indicator
 
             $.ajax({
-                url: "<?php echo site_url('index.php/AdminPanel/fetch_categories'); ?>",
+                url: "<?php echo site_url('AdminPanel/fetch_categories'); ?>",
                 method: "POST",
                 data: {
                     course_name: course_name
@@ -257,7 +257,7 @@
             $('#loading_indicator').show(); // Show the loading indicator
 
             $.ajax({
-                url: "<?php echo site_url('index.php/AdminPanel/fetch_fee'); ?>",
+                url: "<?php echo site_url('AdminPanel/fetch_fee'); ?>",
                 method: "POST",
                 data: {
                     course_name: course_name,

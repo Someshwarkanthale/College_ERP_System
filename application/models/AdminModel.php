@@ -10,6 +10,40 @@ class AdminModel extends CI_Model
         $this->load->database();  // Load the database
     }
 
+    public function check_login($username, $password) {
+        $this->db->where('username', $username);
+        $this->db->where('password', $password);
+        $query = $this->db->get('login');
+        return $query->row();
+    }
+
+    public function get_user_by_username($username) {
+        $this->db->where('username', $username);
+        $query = $this->db->get('login');
+        return $query->row();
+    }
+
+    public function save_reset_token($username, $token) {
+        $this->db->where('username', $username);
+        $this->db->update('login', ['reset_token' => $token]);
+    }
+    public function verify_reset_token($token) {
+        $this->db->where('reset_token', $token);
+        $query = $this->db->get('login');
+        return $query->row();
+    }
+    public function clear_reset_token($username) {
+        $this->db->where('username', $username);
+        $this->db->update('login', ['reset_token' => NULL]);
+    }
+    
+    
+    public function update_password($username, $new_password) {
+        $this->db->where('username', $username);
+        $this->db->update('login', ['password' => $new_password]);
+    }
+    
+        
     // Function to fetch all courses
     public function get_courses()
     {
@@ -247,12 +281,15 @@ public function get_total_students_count()
     return $this->db->count_all('students');
 }
 
-// Get course-wise student count
 public function get_course_wise_count()
 {
-    $this->db->select('course_name, COUNT(*) as count');
-    $this->db->group_by('course_name');
-    return $this->db->get('students')->result();
+    // Select course names and the count of students enrolled in each course
+    $this->db->select('courses.course_name, COUNT(students.id) AS count');
+    $this->db->from('courses');
+    $this->db->join('students', 'students.course_name = courses.course_name', 'left'); 
+    $this->db->group_by('courses.id'); 
+    $query = $this->db->get();
+    return $query->result(); 
 }
 
 // Get category-wise student count

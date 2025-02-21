@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
     <style>
         body {
             background-color: #f4f7fa;
@@ -17,10 +18,9 @@
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             margin-top: 50px;
+            padding: 20px;
         }
-        .form-s {
-            margin: 0 50px 0 50px
-        }
+
         h2 {
             font-size: 30px;
             color: #007bff;
@@ -38,8 +38,8 @@
 
         .btn-primary {
             background-color: #007bff;
-            border-color:rgb(77, 84, 92);
-            padding: 2px;
+            border-color: rgb(77, 84, 92);
+            padding: 5px 15px;
             border-radius: 5px;
         }
 
@@ -69,23 +69,6 @@
             color: white;
         }
 
-        .table-bordered td,
-        .table-bordered th {
-            border: 1px solid #dee2e6;
-        }
-
-        .table-bordered {
-            margin-top: 20px;
-        }
-
-        .button-group {
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-            margin-top: 20px;
-            margin-right: 5px;
-        }
-
         .invoice-info {
             margin-top: 30px;
             font-size: 16px;
@@ -99,66 +82,59 @@
             font-weight: normal;
         }
 
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            color: #6c757d;
-        }
-
         @media print {
+
             .btn-primary,
             .btn-secondary,
-            .footer {
+            .back-button {
                 display: none;
             }
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
+        @media (max-width: 576px) {
 
-            .button-group {
+            /* For small devices (mobile) */
+            .d-flex.justify-content-between {
                 flex-direction: column;
-                align-items: flex-start;
+                gap: 10px;
             }
 
-            .btn {
+            .d-flex .btn {
                 width: 100%;
-                margin-bottom: 10px;
+                margin-bottom:10px;
+                /* Full width on mobile */
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="wrapper ">
-        <?php $this->load->view('AdminView/Adminsidebar'); ?>
-
-        <div class="main bg-white ">
-            <?php $this->load->view('AdminView/Nav_admin'); ?>
-            
-            <div class="button-group ">
+    <div class="wrapper">
+        <div class="main bg-white">
+            <div class="container">
+                <div class="d-flex justify-content-between">
                     <!-- Print Button -->
-                    <button class="btn-primary" onclick="window.print()">
+                    <button class="btn btn-primary" onclick="window.print()">
                         <i class="fas fa-print"></i> Print
                     </button>
-                  
+                    <!-- Back Button -->
+                    <a href="<?= base_url('AdminPanel/studentList'); ?>" class="btn btn-secondary back-button">
+                        <i class="fas fa-arrow-left"></i> Back to Student List
+                    </a>
                 </div>
-            <div class="container form-s">
 
                 <h2>Payment Invoice</h2>
 
-                <div class="invoice-info form-s">
-                    <p><strong>Student Name:</strong> <span><?php echo $student->student_name; ?></span></p>
-                    <p><strong>Course Name:</strong> <span><?php echo $student->course_name; ?></span></p>
-                    <p><strong>Category:</strong> <span><?php echo $student->category; ?></span></p>
-                    <p><strong>Total Fee:</strong> <span>&#8377;<?php echo number_format($student->total_fee, 2); ?></span></p>
-                    <p><strong>Paid Fee:</strong> <span>&#8377;<?php echo number_format($student->paid_fee, 2); ?></span></p>
-                    <p><strong>Remaining Fee:</strong> <span>&#8377;<?php echo number_format($student->remaining_fee, 2); ?></span></p>
+                <div class="invoice-info">
+                    <p><strong>Student Name:</strong> <span><?= $student->student_name; ?></span></p>
+                    <p><strong>Course Name:</strong> <span><?= $student->course_name; ?></span></p>
+                    <p><strong>Category:</strong> <span><?= $student->category; ?></span></p>
+                    <p><strong>Total Fee:</strong> <span>&#8377;<?= number_format($student->total_fee, 2); ?></span></p>
+                    <p><strong>Paid Fee:</strong> <span>&#8377;<?= number_format($student->paid_fee, 2); ?></span></p>
+                    <p><strong>Remaining Fee:</strong> <span>&#8377;<?= number_format($student->remaining_fee, 2); ?></span></p>
                 </div>
 
-                <h4 class="form-s">Transactions</h4>
+                <h4>Transactions</h4>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -168,28 +144,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($transactions as $index => $transaction): ?>
+                        <?php if (!empty($transactions)): ?>
+                            <?php foreach ($transactions as $index => $transaction): ?>
+                                <tr>
+                                    <td><?= $index + 1; ?></td>
+                                    <td>&#8377;<?= number_format($transaction->paid_fee, 2); ?></td>
+                                    <td><?= date('Y-m-d', strtotime($transaction->transaction_date)); ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
                             <tr>
-                                <td><?php echo $index + 1; ?></td>
-                                <td>&#8377;<?php echo number_format($transaction->paid_fee, 2); ?></td>
-                                <td><?php echo date('Y-m-d', strtotime($transaction->transaction_date)); ?></td>
+                                <td colspan="3">No Transactions Found</td>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
-    <!-- Font Awesome for the print icon -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-    const sidebarToggle = document.querySelector("#sidebar-toggle");
-    sidebarToggle.addEventListener("click", function() {
-        document.querySelector("#sidebar").classList.toggle("collapsed");
-    });
-</script>
 </body>
 
 </html>

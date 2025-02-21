@@ -146,7 +146,7 @@
             <!--Page area start-->
             <div class="container mt-5">
                 <h2>Update Additional Fee</h2>
-                <form action="<?php echo site_url('index.php/AdminPanel/update_additional_fee/' . $fee->id); ?>" method="POST">
+                <form action="<?php echo site_url('AdminPanel/update_additional_fee/' . $fee->id); ?>" method="POST">
                     <div class="form-group">
                         <label for="department">Department:</label>
                         <input type="text" name="department" id="department" class="form-control"

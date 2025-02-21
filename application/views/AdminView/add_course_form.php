@@ -153,8 +153,7 @@
                 <?php endif; ?>
 
                 <?php echo validation_errors(); ?>
-
-                <form action="<?php echo site_url('index.php/AdminPanel/add_course'); ?>" method="post">
+                <form action="<?php echo site_url('AdminPanel/add_course'); ?>" method="post">
                     <div class="form-group">
                         <label for="course_name">Course Name</label>
                         <input type="text" class="form-control" id="course_name" name="course_name" placeholder="Enter course name" required>

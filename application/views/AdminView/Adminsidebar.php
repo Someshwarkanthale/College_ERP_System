@@ -192,7 +192,7 @@
     margin-bottom: 0;
     padding-left: 0;
     margin-left: 0;
-    
+
   }
 
   .sidebar-header {
@@ -296,37 +296,37 @@
       width: 100vw;
     }
   }
-  
-        /* Theme Toggler */
 
-        .theme-toggle {
-            position: fixed;
-            top: 50%;
-            transform: translateY(-65%);
-            text-align: center;
-            z-index: 10;
-            right: 0;
-            left: auto;
-            border: none;
-            background-color: var(--bs-body-color);
-        }
+  /* Theme Toggler */
 
-        html[data-bs-theme="dark"] .theme-toggle .fa-sun,
-        html[data-bs-theme="light"] .theme-toggle .fa-moon {
-            cursor: pointer;
-            padding: 10px;
-            display: block;
-            font-size: 1.25rem;
-            color: #FFF;
-        }
+  .theme-toggle {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-65%);
+    text-align: center;
+    z-index: 10;
+    right: 0;
+    left: auto;
+    border: none;
+    background-color: var(--bs-body-color);
+  }
 
-        html[data-bs-theme="dark"] .theme-toggle .fa-moon {
-            display: none;
-        }
+  html[data-bs-theme="dark"] .theme-toggle .fa-sun,
+  html[data-bs-theme="light"] .theme-toggle .fa-moon {
+    cursor: pointer;
+    padding: 10px;
+    display: block;
+    font-size: 1.25rem;
+    color: #FFF;
+  }
 
-        html[data-bs-theme="light"] .theme-toggle .fa-sun {
-            display: none;
-        }
+  html[data-bs-theme="dark"] .theme-toggle .fa-moon {
+    display: none;
+  }
+
+  html[data-bs-theme="light"] .theme-toggle .fa-sun {
+    display: none;
+  }
 
   .js-sidebar {
     position: -webkit-sticky;
@@ -350,177 +350,41 @@
 
     <!-- Content For Sidebar -->
     <div class="h-100">
-      <div class="sidebar-logo bg-white " >
-        <img src="<?php echo base_url('assets/Images/College_ERP.png') ?>" width="220px" height="50px" style="margin-top:-10px;margin-bottom:-10px;">
+      <div class="sidebar-logo bg-white ">
+        <img src="<?php echo base_url('assets/Images/College_ERP.png') ?>" width="150px" height="40px" style="margin-top:-10px;margin-bottom:-10px;padding-left:50px;">
       </div>
-      <!-- <div class="sidebar-nav " >
-        <img src="<?php echo base_url('assets/Images/College_ERP.png') ?>" width="262px" height="70px" >
-      </div> -->
-      <!-- <div class="sidebar-nav " >
-        <br>
-      </div> -->
+      
       <ul class="sidebar-nav">
         <!-- <h5 class="ms-3 mb-3 text-white fw-bold fs-1 m-auto">Dashboard</h5> -->
         <li class="sidebar-item ">
-          <a href="<?php echo base_url('index.php/AdminPanel/Dashboard'); ?>" class="sidebar-link fs-5">
+          <a href="<?php echo base_url('AdminPanel/Dashboard'); ?>" class="sidebar-link fs-5">
             <i class="fa fa-solid fa-house me-2"></i>
             Dashboard
           </a>
         </li>
         <li class="sidebar-item ">
-          <a href="<?php echo base_url('index.php/AdminPanel/CourseFee'); ?>" class="sidebar-link fs-5">
-          <i class="fa-solid fa-table me-3"></i>
+          <a href="<?php echo base_url('AdminPanel/CourseFee'); ?>" class="sidebar-link fs-5">
+            <i class="fa-solid fa-table me-3"></i>
             Courses & Fees
           </a>
         </li>
         <li class="sidebar-item ">
-          <a href="<?php echo base_url('index.php/AdminPanel/Studentlist'); ?>" class="sidebar-link fs-5">
-          <i class="fa-solid fa-users fs-5 me-2"></i>
+          <a href="<?php echo base_url('AdminPanel/Studentlist'); ?>" class="sidebar-link fs-5">
+            <i class="fa-solid fa-users fs-5 me-2"></i>
             Fee Reports
           </a>
         </li>
         <li class="sidebar-item ">
-          <a href="<?php echo base_url('index.php/AdminPanel/AddStudentForm'); ?>" class="sidebar-link fs-5">
-          <i class="fa-solid fa-user-plus fs-5 me-2"></i>
-           Add Student 
+          <a href="<?php echo base_url('AdminPanel/AddStudentForm'); ?>" class="sidebar-link fs-5">
+            <i class="fa-solid fa-user-plus fs-5 me-2"></i>
+            Add Student
           </a>
         </li>
-        <!-- <li class="sidebar-item">
-          <a href="#" class="sidebar-link collapsed fs-5" data-bs-target="#Addinternshipenquiry" data-bs-toggle="collapse"
-            aria-expanded="false"><i class="fa-solid fa-user-plus fs-5 me-2"></i>
-            Internship Enquiry
-          </a>
-          <ul id="Addinternshipenquiry" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-            <li class="sidebar-item">
-              <a class="sidebar-link fs-6" href="<?php echo base_url('Admin/Sdashboard'); ?>">Sales Dashboard</a>
-            </li>
-            <li class="sidebar-item">
-              <a href="<?php echo base_url('Admin/Sfollowup_view'); ?>" class="sidebar-link fs-6">Enquiry Follow
-                Up</a>
-            </li>
-          </ul>
-        </li>
-        <li class="sidebar-item">
-          <a href="#" class="sidebar-link collapsed fs-5" data-bs-target="#report" data-bs-toggle="collapse"
-            aria-expanded="false"><i class="fa-solid fa-table me-3"></i>
-            Reports
-          </a>
-          <ul id="report" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-            <li class="sidebar-item">
-              <a href="<?php echo base_url('Admin/Report'); ?>" class="sidebar-link fs-6">Generate Report</a>
-            </li>
-
-          </ul>
-        </li>
-        <!---Course fee list-->
-        <!-- <li class="sidebar-item">
-          <a href="#" class="sidebar-link collapsed fs-5" data-bs-target="#register" data-bs-toggle="collapse"
-            aria-expanded="false"><i class="fa-solid fa-table me-3"></i>
-            Registration
-          </a>
-         
-        </li> -->
-
-        <!-- <li class="sidebar-item">
-      <a href="#" class="sidebar-link collapsed fs-5" data-bs-target="#Addenquiry" data-bs-toggle="collapse"
-        aria-expanded="false"><i class="fa-solid fa-user-plus fs-5 me-2"></i>
-        Enquiry
-      </a>
-      <ul id="Addenquiry" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-
-
-
-
-        <li class="sidebar-item">
-          <a class="sidebar-link fs-6" href="<?php echo base_url('Admin/Sdashboard'); ?>">Sales Dashboard</a>
-        </li>
-        <li class="sidebar-item">
-          <a href="<?php echo base_url('Admin/Sfollowup_view'); ?>" class="sidebar-link fs-6">Enquiry Follow
-            Up</a>
-        </li>
-      </ul>
-    </li> -->
-
-        <!-- <li class="sidebar-item">
-          <a href="#" class="sidebar-link collapsed fs-5" data-bs-target="#Addinternshipenquiry" data-bs-toggle="collapse"
-            aria-expanded="false"><i class="fa-solid fa-user-plus fs-5 me-2"></i>
-            Internship Enquiry
-          </a>
-          <ul id="Addinternshipenquiry" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-            <li class="sidebar-item">
-              <a class="sidebar-link fs-6" href="<?php echo base_url('Admin/Sdashboard'); ?>">Sales Dashboard</a>
-            </li>
-            <li class="sidebar-item">
-              <a href="<?php echo base_url('Admin/Sfollowup_view'); ?>" class="sidebar-link fs-6">Enquiry Follow
-                Up</a>
-            </li>
-          </ul>
-        </li>
-        <li class="sidebar-item">
-          <a href="#" class="sidebar-link collapsed fs-5" data-bs-target="#Addsoftwareenquiry" data-bs-toggle="collapse"
-            aria-expanded="false"><i class="fa-solid fa-user-plus fs-5 me-2"></i>
-            Software Enquiry
-          </a>
-          <ul id="Addsoftwareenquiry" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-            <li class="sidebar-item">
-              <a class="sidebar-link fs-6" href="<?php echo base_url('Admin/Ssdashboard'); ?>">Sales Dashboard</a>
-            </li>
-            <li class="sidebar-item">
-              <a href="<?php echo base_url('Admin/Ssfollowup_view'); ?>" class="sidebar-link fs-6">Enquiry Follow
-                Up</a>
-            </li>
-          </ul>
-        </li>
-
-        <li class="sidebar-item">
-          <a href="#" class="sidebar-link collapsed fs-5" data-bs-target="#Adddemo" data-bs-toggle="collapse"
-            aria-expanded="false"><i class="fa-solid fa-users fs-5 me-2"></i>
-            Product Demo
-          </a>
-          <ul id="Adddemo" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-
-            <li class="sidebar-item">
-              <a class="sidebar-link fs-6" href="<?php echo base_url('Admin/Ddashboard'); ?>">Demo Dashboard</a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link fs-6" href="<?php echo base_url('Admin/Dfollowup_view'); ?>">Demo Follow
-                Up</a>
-            </li>
-          </ul>
-        </li>
-
-       
-
-        <li class="sidebar-item">
-          <a href="#" class="sidebar-link collapsed fs-5" data-bs-target="#report" data-bs-toggle="collapse"
-            aria-expanded="false"><i class="fa-solid fa-table me-3"></i>
-            Reports
-          </a>
-          <ul id="report" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-            <li class="sidebar-item">
-              <a href="<?php echo base_url('Admin/Report'); ?>" class="sidebar-link fs-6">Generate Report</a>
-            </li>
-
-          </ul>
-        </li>
-
-        <li class="sidebar-item">
-          <a href="#" class="sidebar-link collapsed fs-5" data-bs-target="#Account" data-bs-toggle="collapse"
-            aria-expanded="false">
-            <i class="fa-solid fa-bars me-3"></i>
-            Account
-          </a>
-          <ul id="Account" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-            <li class="sidebar-item">
-              <a class="sidebar-link fs-6" href="/logout">Logout</a>
-            </li>
-          </ul>
-        </li> --> 
       </ul>
     </div>
   </aside>
 
-   
+
 </body>
 
 </html>

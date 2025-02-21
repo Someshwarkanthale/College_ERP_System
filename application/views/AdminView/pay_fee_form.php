@@ -100,7 +100,7 @@
                 </div>
 
                 <h4 class="text-primary form-s">New Payment</h4>
-                <form class="form-s" action="<?php echo site_url('index.php/AdminPanel/process_fee_payment'); ?>" method="post" onsubmit="return validateFee()">
+                <form class="form-s" action="<?php echo site_url('AdminPanel/process_fee_payment'); ?>" method="post" onsubmit="return validateFee()">
                     <input type="hidden" name="student_id" value="<?php echo $student->id; ?>">
                     <div class="form-group mb-3">
                         <label for="paid_fee">Paid Fee</label>

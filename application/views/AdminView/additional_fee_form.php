@@ -147,7 +147,7 @@
             <!--Page area start-->
             <div class="container mt-5">
                 <h2>Add Additional Fee</h2>
-                <form action="<?php echo site_url('index.php/AdminPanel/add_additional_fee'); ?>" method="POST">
+                <form action="<?php echo site_url('AdminPanel/add_additional_fee'); ?>" method="POST">
                     <div class="form-group">
                         <label for="department">Department:</label>
                         <input type="text" name="department" id="department" class="form-control" required>

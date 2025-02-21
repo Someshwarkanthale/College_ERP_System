@@ -104,6 +104,72 @@
                 padding: 6px;
             }
         }
+        /* Tablet View (Landscape and Portrait) */
+@media (max-width: 992px) {
+    /* Container adjustments for padding */
+    .container {
+        padding: 15px;
+    }
+
+    /* Table responsiveness */
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* Adjust button sizes */
+    .btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    /* Flex wrapping for Actions */
+    td form, td a {
+        display: block;
+        margin-bottom: 5px;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 576px) {
+    /* Heading size reduction */
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    /* Button adjustments */
+    .btn-group-custom {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Table scroll */
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    table th,
+    table td {
+        white-space: nowrap;
+        text-align: left;
+        font-size: 0.8rem;
+        padding: 6px;
+    }
+
+    /* Actions stacking */
+    td form,
+    td a {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+}
+
+
     </style>
 </head>
 
@@ -117,11 +183,12 @@
             <div class="container mt-5">
                 <h1>Student List</h1>
                 <br>
-                <form method="get" action="<?php echo site_url('index.php/AdminPanel/Studentlist'); ?>" class="mb-3">
-                    <div class="input-group">
+                <form method="get" action="<?php echo site_url('AdminPanel/Studentlist'); ?>" class="mb-3">
+                    <div class="input-group row mx-auto">
                         <input type="text" id="search-input" name="search" placeholder="Search by name, category, or course"
-                            class="form-control" autocomplete="off">
-                        <button type="submit" class="btn btn-primary">Search</button>
+                            class="form-control col-lg-10 col-md-8 col-sm-8 col-12" autocomplete="off"  >
+                            
+                        <button type="submit" class="btn btn-primary col-lg-2 col-md-4 col-sm-4 col-12" >Search</button>
                     </div>
                     <div id="suggestions" class="list-group position-absolute w-100" style="z-index: 1000; max-height: 200px; overflow-y: auto; display: none;">
                         <!-- Suggestions will be appended here -->
@@ -152,12 +219,12 @@
                                 <td><?php echo number_format($student->paid_fee, 2); ?></td>
                                 <td><?php echo number_format($student->remaining_fee, 2); ?></td>
                                 <td>
-                                    <form action="<?php echo site_url('index.php/AdminPanel/pay_fee_form/' . $student->id); ?>" method="get" class="d-inline">
+                                    <form action="<?php echo site_url('AdminPanel/pay_fee_form/' . $student->id); ?>" method="get" class="d-inline">
                                         <button type="submit" class="btn btn-success btn-sm">Pay Fee</button>
                                     </form>
-                                    <a href="<?php echo site_url('index.php/AdminPanel/edit_student/' . $student->id); ?>"
+                                    <a href="<?php echo site_url('AdminPanel/edit_student/' . $student->id); ?>"
                                         class="btn btn-warning btn-sm">Update</a>
-                                    <a href="<?php echo site_url('index.php/AdminPanel/delete/' . $student->id); ?>"
+                                    <a href="<?php echo site_url('AdminPanel/delete/' . $student->id); ?>"
                                         class="btn btn-danger btn-sm"
                                         onclick="return confirm('Are you sure you want to delete this student?');">
                                         Delete
@@ -193,7 +260,7 @@
             if (query.length >= 2) {
                 // AJAX request to fetch suggestions
                 $.ajax({
-                    url: "<?php echo site_url('index.php/AdminPanel/getSuggestions'); ?>",
+                    url: "<?php echo site_url('AdminPanel/getSuggestions'); ?>",
                     type: "GET",
                     data: { search: query },
                     success: function (response) {
