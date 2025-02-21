@@ -60,8 +60,8 @@ class AdminPanel extends CI_Controller
                     'protocol' => 'smtp',
                     'smtp_host' => 'smtp.gmail.com',
                     'smtp_port' => 587,
-                    'smtp_user' => 'someshwarkanthale0@gmail.com', // Your email address
-                    'smtp_pass' => 'rqyr xkqu rmhh sgrl',  // Your email password
+                    'smtp_user' => '', // Your email address
+                    'smtp_pass' => '',  // Your email password
                     'mailtype'  => 'html',
                     'charset'   => 'utf-8',
                     'newline'   => "\r\n",
@@ -70,7 +70,7 @@ class AdminPanel extends CI_Controller
                 $this->load->library('email', $config);
     
                 // Email Setup
-                $this->email->from('someshwarkanthale0@gmail.com', 'Fee Management');
+                $this->email->from('', 'Fee Management');
                 $this->email->to($user->email);
                 $this->email->subject('Password Reset Request');
                 $this->email->message('Click here to reset your password: <a href="' . $reset_link . '">Reset Password</a>');
