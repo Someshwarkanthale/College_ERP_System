@@ -64,13 +64,13 @@
             color: #e63946;
         }
 
-        .button-group {
+        .button-group-a {
             display: flex;
             justify-content: space-between;
             margin-top: 20px;
         }
 
-        button.btn {
+        button.btn-a {
             flex: 1;
             margin: 0 5px;
             padding: 10px;
@@ -162,9 +162,9 @@
                         <input type="number" name="fee" id="fee" class="form-control" required step="0.01">
                         <small id="feeError" class="form-text text-danger"></small>
                     </div>
-                    <div class="button-group">
-                        <button type="submit" class="btn btn-primary">Add Data</button>
-                        <button type="button" class="btn btn-secondary" onclick="history.back();">Cancel</button>
+                    <div class="button-group-a">
+                        <button type="submit" class="btn-a btn-primary">Add Data</button>
+                        <button type="button" class="btn-a btn-secondary" onclick="history.back();">Cancel</button>
                     </div>
 
 

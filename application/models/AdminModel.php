@@ -10,58 +10,50 @@ class AdminModel extends CI_Model
         $this->load->database();  // Load the database
     }
 
-    public function check_login($username, $password)
-    {
+    public function check_login($username, $password) {
         $this->db->where('username', $username);
         $this->db->where('password', $password);
         $query = $this->db->get('login');
         return $query->row();
     }
 
-    public function get_user_by_username($username)
-    {
+    public function get_user_by_username($username) {
         $this->db->where('username', $username);
         $query = $this->db->get('login');
         return $query->row();
     }
 
-    public function save_reset_token($username, $token)
-    {
+    public function save_reset_token($username, $token) {
         $this->db->where('username', $username);
         $this->db->update('login', ['reset_token' => $token]);
     }
-
-    public function verify_reset_token($token)
-    {
+    public function verify_reset_token($token) {
         $this->db->where('reset_token', $token);
         $query = $this->db->get('login');
         return $query->row();
     }
-
-    public function clear_reset_token($username)
-    {
+    public function clear_reset_token($username) {
         $this->db->where('username', $username);
         $this->db->update('login', ['reset_token' => NULL]);
     }
-
-    public function update_password($username, $new_password)
-    {
+    
+    
+    public function update_password($username, $new_password) {
         $this->db->where('username', $username);
         $this->db->update('login', ['password' => $new_password]);
     }
-
-
+    
+        
     // Function to fetch all courses
     public function get_courses()
     {
         $query = $this->db->get('courses');  // Fetch courses from 'courses' table
         return $query->result();  // Return the results as an array of objects
     }
-
     public function get_total_courses()
-    {
-        return $this->db->count_all('courses');
-    }
+{
+    return $this->db->count_all('courses');
+}
 
     // Insert a new course into the courses table
     public function insert_course($course_name, $fee)
@@ -93,23 +85,23 @@ class AdminModel extends CI_Model
         $query = $this->db->get('courses'); // Replace 'courses' with your actual table name
         return $query->num_rows() > 0;
     }
-
+    
     // Fetch course by ID
     public function get_course_by_id($course_id)
     {
         return $this->db->get_where('courses', ['id' => $course_id])->row();
     }
-
+   
     public function update_course($course_id, $data)
-    {
-        $this->db->where('id', $course_id);
-        $this->db->update('courses', $data);
-    }
-    public function rename_table($old_table_name, $new_table_name)
-    {
-        $query = "RENAME TABLE `$old_table_name` TO `$new_table_name`";
-        $this->db->query($query);
-    }
+{
+    $this->db->where('id', $course_id);
+    $this->db->update('courses', $data);
+}
+public function rename_table($old_table_name, $new_table_name)
+{
+    $query = "RENAME TABLE `$old_table_name` TO `$new_table_name`";
+    $this->db->query($query);
+}
 
     // Delete a course by ID
     public function delete_course($course_id)
@@ -246,14 +238,13 @@ class AdminModel extends CI_Model
         return $this->db->get('students')->result();
     }
 
-    public function getMatchingStudents($search)
-    {
+    public function getMatchingStudents($search) {
         $this->db->like('student_name', $search);
         $this->db->select('id, student_name AS name'); // Select necessary fields
         $query = $this->db->get('students'); // Replace 'students' with your table name
         return $query->result_array();
     }
-
+    
     // Update fee payment
     public function update_fee($id, $paid_amount)
     {
@@ -284,30 +275,30 @@ class AdminModel extends CI_Model
     {
         return $this->db->where('id', $id)->get('students')->row();
     }
-    // Get total number of students
-    public function get_total_students_count()
-    {
-        return $this->db->count_all('students');
-    }
+// Get total number of students
+public function get_total_students_count()
+{
+    return $this->db->count_all('students');
+}
 
-    public function get_course_wise_count()
-    {
-        // Select course names and the count of students enrolled in each course
-        $this->db->select('courses.course_name, COUNT(students.id) AS count');
-        $this->db->from('courses');
-        $this->db->join('students', 'students.course_name = courses.course_name', 'left');
-        $this->db->group_by('courses.id');
-        $query = $this->db->get();
-        return $query->result();
-    }
+public function get_course_wise_count()
+{
+    // Select course names and the count of students enrolled in each course
+    $this->db->select('courses.course_name, COUNT(students.id) AS count');
+    $this->db->from('courses');
+    $this->db->join('students', 'students.course_name = courses.course_name', 'left'); 
+    $this->db->group_by('courses.id'); 
+    $query = $this->db->get();
+    return $query->result(); 
+}
 
-    // Get category-wise student count
-    public function get_category_wise_count()
-    {
-        $this->db->select('category, COUNT(*) as count');
-        $this->db->group_by('category');
-        return $this->db->get('students')->result();
-    }
+// Get category-wise student count
+public function get_category_wise_count()
+{
+    $this->db->select('category, COUNT(*) as count');
+    $this->db->group_by('category');
+    return $this->db->get('students')->result();
+}
 
     // Get fee transactions for a student
     public function get_transactions_by_student_id($id)
@@ -335,4 +326,8 @@ class AdminModel extends CI_Model
             'remaining_fee' => $remaining_fee,
         ]);
     }
+
+    
+
+
 }

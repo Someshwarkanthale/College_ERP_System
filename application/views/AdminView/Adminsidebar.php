@@ -351,7 +351,7 @@
     <!-- Content For Sidebar -->
     <div class="h-100">
       <div class="sidebar-logo bg-white ">
-        <img src="<?php echo base_url('assets/Images/College_ERP.png') ?>" width="150px" height="40px" style="margin-top:-10px;margin-bottom:-10px;padding-left:50px;">
+        <img src="<?php echo base_url('assets/Images/fee3.jpg') ?>" width="266px" height="75px" style="margin-top:-20px;margin-bottom:-20px;margin-left:-20px" >
       </div>
       
       <ul class="sidebar-nav">

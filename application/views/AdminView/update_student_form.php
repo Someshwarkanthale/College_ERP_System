@@ -137,7 +137,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Update</button>
-            <a href="<?php echo site_url('Courses/list'); ?>" class="btn btn-secondary">Cancel</a>
+            <a href="<?php echo site_url('AdminPanel/Studentlist'); ?>" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
 
